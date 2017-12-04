@@ -7,8 +7,15 @@ import
   RepoSearchPage
  from './containers/RepoSearchPage/page/RepoSearchPage';
 
+import
+ RepoResultPage
+from './containers/RepoSearchPage/page/RepoResultPage';
+
+
+
 export default (
   <Route path="/">
     <IndexRoute component={RepoSearchPage} />
+    <Route component={RepoResultPage} path="find/:postcode" />
   </Route>
 );

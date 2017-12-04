@@ -5,9 +5,13 @@ import { RepoSearchPage } from './RepoSearchPage';
 describe('<RepoSearchPage />', () => {
   let props = {};
   let repoDataMock = {
-    name: 'foo',
-    id: 'bar',
-    stargazers_count: '5'
+    "Complex claimants":"FALSE",
+    "High-level":"06/2018",
+    Rollout:" ",
+    lad11cd:"E07000237",
+    lad11nm:"Worcester",
+    pcd7:"WR4 9LP",
+    pcd8:"WR4  9LP",
   };
   beforeEach(() => {
 
@@ -15,7 +19,7 @@ describe('<RepoSearchPage />', () => {
       actions: {
         fetchRepos: jest.fn(),
       },
-      searchResults: [ repoDataMock ]
+      searchResults: repoDataMock
     };
   });
 

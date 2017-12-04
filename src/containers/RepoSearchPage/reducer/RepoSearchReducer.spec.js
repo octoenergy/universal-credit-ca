@@ -2,16 +2,16 @@ import RepoSearchReducer from './RepoSearchReducer';
 import { actionTypes } from '../RepoSearchConstants';
 
 const initialState = {
-  results: [],
+  result: [],
   error: '',
   loading: false,
 };
 
 describe('RepoSearchReducer', () => {
   describe('UPDATE_RESULTS', () => {
-    it('should update the results', () => {
-      const newState = RepoSearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, items: ['foo'] });
-      expect(newState.results).toEqual(['foo']);
+    it('should update the result', () => {
+      const newState = RepoSearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: ['foo'] });
+      expect(newState.result).toEqual(['foo']);
     });
   });
   describe('REQUEST_COMPLETE', () => {

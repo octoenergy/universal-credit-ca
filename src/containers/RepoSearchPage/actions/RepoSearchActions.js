@@ -1,16 +1,16 @@
 import searchService from '../../../services/search/searchService';
 import { actionTypes } from '../RepoSearchConstants';
 
-export const fetchRepos = () => async (dispatch) => {
+export const fetchRepos = (postcode) => async (dispatch) => {
   let error = '';
   dispatch({
     type: actionTypes.REQUEST_START,
   });
   try {
-    const { items } = await searchService.repoSearch();
+    const result = await searchService.repoSearch(postcode);
     dispatch({
       type: actionTypes.UPDATE_RESULTS,
-      items,
+      result,
     });
   }
   catch ({ message }) {

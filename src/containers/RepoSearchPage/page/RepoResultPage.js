@@ -11,7 +11,7 @@ export class RepoSearchPage extends Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetchRepos();
+    this.props.actions.fetchRepos(this.props.params.postcode);
   }
 
   render() {
@@ -45,6 +45,7 @@ RepoSearchPage.propTypes = {
   actions: PropTypes.object.isRequired,
   error: PropTypes.string,
   loading: PropTypes.bool,
+  params: PropTypes.object.isRequired,
 };
 
 RepoSearchPage.defaultProps = {
