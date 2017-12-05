@@ -1,5 +1,5 @@
-import SearchReducer from './SearchReducer';
-import { actionTypes } from '../SearchConstants';
+import SearchReducer from './ResultPageReducer';
+import { actionTypes } from '../ResultPageConstants';
 
 const initialState = {
   result: [],

@@ -1,6 +1,6 @@
 import { fetchRepos } from './actions';
 import searchService from '../../../services/search/searchService';
-import { actionTypes } from '../SearchConstants';
+import { actionTypes } from '../ResultPageConstants';
 
 jest.mock('../../../services/search/searchService');
 
