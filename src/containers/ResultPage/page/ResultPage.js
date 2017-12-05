@@ -5,47 +5,23 @@ import { bindActionCreators } from 'redux';
 import * as SearchActions from '../actions/actions';
 import './ResultPageStyles.scss';
 import PostcodeForm from '../../../components/PostcodeForm/PostcodeForm';
+import LocationDetails from '../components/LocationDetails/LocationDetails';
 
 export class ResultPage extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentWillMount() {
-    this.props.actions.fetchRepos(this.props.params.postcode);
-  }
-
-  componentWillUpdate(newProps) {
-    const postcode = this.props.params.postcode
-    if (postcode !== newProps.params.postcode) {
-      this.props.actions.fetchRepos(postcode); 
-    }
-  }
-
   render() {
-    const { error, searchResults, loading } = this.props;
-    const {
-      Rollout,
-      lad11nm,
-      pcd7,
-     } = searchResults;
-    const complex = searchResults["Complex claimants"];
-    const highLevel = searchResults["High-level"];
+    const { error, searchResults, loading, actions: { fetchResult }, params: { postcode } } = this.props;
     return (
       <div>
         <header>
           <PostcodeForm onSubmit={() => {}} />
         </header>
-        <h1>Postcode search</h1>
         {error && <p>{error}</p>}
         {loading && <div className="loader" />}
-        {!loading && <ul>
-          <li>Rollout: {Rollout}</li>
-          <li>Postcode: {pcd7}</li>
-          <li>Complex claimants: {complex}</li>
-          <li>High-level: {highLevel}</li>
-          <li>lad11nm: {lad11nm}</li>
-        </ul>}
+        <LocationDetails searchResults={searchResults} fetchResult={fetchResult} postcode={postcode} />
       </div>
     );
   }
