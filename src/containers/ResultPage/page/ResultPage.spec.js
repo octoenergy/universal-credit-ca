@@ -19,7 +19,10 @@ describe('<ResultPage />', () => {
       actions: {
         fetchRepos: jest.fn(),
       },
-      searchResults: repoDataMock
+      searchResults: repoDataMock,
+      params: {
+        postcode: "WR49LP"
+      }
     };
   });
 

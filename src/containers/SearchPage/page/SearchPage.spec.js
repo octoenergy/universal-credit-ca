@@ -1,15 +1,15 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import { SearchPage } from './SearchPage';
+//import React from 'react';
+//import { mount } from 'enzyme';
+//import { SearchPage } from './SearchPage';
 
 describe('<SearchPage />', () => {
-  let props = {};
+  //let props = {};
 
   beforeEach(() => {
 
-    props = {
-
-    };
+    // props = {
+    //
+    // };
   });
 
   describe('Find postcode', () => {
