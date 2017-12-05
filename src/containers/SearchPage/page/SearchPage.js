@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ResultPageStyles from '../actions/SearchPageActions';
 import './SearchPageStyles.scss';
+import PostcodeForm from '../../../components/PostcodeForm/PostcodeForm';
 
 export class SearchPage extends Component {
   constructor(props) {
@@ -23,10 +24,8 @@ export class SearchPage extends Component {
         <p>The new Universal Credit Full Service is rolling out across the U.K.</p>
         <p>It allows claimants to replace <strong>Jobseeker's Allowance, Employment and Support Allowance, Housing benefits, Income Support, Child Tax Credits</strong> and <strong>Working Tax Credits</strong> into a single monthly payment.</p>
         <p>To find out when it will be available, enter a postcode below.</p>
-        <form onSubmit={this.onSubmit}>
-          <input type="text" placeholder="Enter a postcode" />
-          <button type="submit">Go</button>
-        </form>
+
+        <PostcodeForm submitForm={this.onSubmit} />
       </div>
     );
   }
