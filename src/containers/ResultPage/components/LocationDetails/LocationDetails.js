@@ -42,7 +42,7 @@ class LocationDetails extends Component {
           <p>Once it does, any claimant can make a claim, and claims can be made and managed online.</p>
         </div>}
 
-        {!isComplex && <div className="info">
+        {isComplex && <div className="info">
           <h4>Currently</h4>
           <p>Single claimants, couples and families can make a claim online. Claimants must earn less than £338 per month, after tax.</p>
           <p>Visit <a href="https://www.universal-credit.service.gov.uk/">the Universal Credit website</a> to make a claim.</p>

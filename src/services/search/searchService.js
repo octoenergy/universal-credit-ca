@@ -8,6 +8,7 @@ let config = {
  storageBucket: "cab-demo-51f15.appspot.com",
  messagingSenderId: "679001820724"
 };
+
 firebase.initializeApp(config);
 
 export function formatPostcode(postcode) {
@@ -24,16 +25,21 @@ export function formatPostcode(postcode) {
 
 const repoSearch = async (postcode) => {
   let searchParam = formatPostcode(postcode);
-  let snapshot = await firebase.database().ref('/postcodes/results').orderByChild('pcd7').equalTo(searchParam).once('value');
+  let snapshot = await firebase.database().ref('/postcodesupdated').orderByChild('pcd7').equalTo(searchParam).once('value');
   let data = snapshot.val();
-  if (!data) {
-    throw new Error('could not get postcode');
+  if (data.length) {
+    data = data[0];
   } else {
     for (let variable in data) {
       if (data.hasOwnProperty(variable)) {
-        return data[variable];
+        data = data[variable];
       }
     }
+  }
+  if (!data) {
+    throw new Error('could not get postcode');
+  } else {
+    return data;
   }
 };
 

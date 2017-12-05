@@ -5,9 +5,8 @@ import { ResultPage } from './ResultPage';
 describe('<ResultPage />', () => {
   let props = {};
   let repoDataMock = {
-    "Complex claimants":"FALSE",
-    "High-level":"06/2018",
-    Rollout:"",
+    isComplex:"FALSE",
+    highLevel:"06/2018",
     lad11cd:"E07000237",
     lad11nm:"Worcester",
     pcd7:"WR4 9LP",

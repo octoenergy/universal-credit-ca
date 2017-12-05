@@ -38,15 +38,15 @@ export default (state = initialState, action) => {
     case actionTypes.UPDATE_RESULTS: {
       const result = action.result;
       const {
-        Rollout,
+        rollout,
+        isComplex,
+        highLevel
        } = result;
-      const complex = result["Complex claimants"];
-      const highLevel = result["High-level"];
-      const isLive = !!((!Rollout && !dateInFuture(highLevel)) || (Rollout && !dateInFuture(Rollout)));
+      const isLive = !!((!rollout && !dateInFuture(highLevel)) || (rollout && !dateInFuture(rollout)));
       const newResult = {
-        isComplex: complex === 'TRUE',
+        isComplex: isComplex === 'TRUE',
         isLive,
-        goLiveDate: Rollout ? Rollout : highLevel,
+        goLiveDate: rollout ? rollout : highLevel,
         pcd7: result.pcd7,
         lad11nm: result.lad11nm
       };

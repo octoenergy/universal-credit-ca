@@ -12,13 +12,11 @@ describe('SearchReducer', () => {
 
     it('should set lad11nm', () => {
       const testResult = {
-       'Complex claimants': 'FALSE',
-       'High-level': '04/2018',
-       Rollout: ' ',
+       isComplex: 'FALSE',
+       highLevel: '04/2018',
        lad11cd: 'E08000030',
        lad11nm: 'Walsall',
-       pcd7: 'WS5 3NU',
-       pcd8: 'WS5  3NU',
+       pcd7: 'WS53NU',
       };
       const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: testResult });
       expect(newState.result.lad11nm).toEqual('Walsall');
@@ -26,27 +24,23 @@ describe('SearchReducer', () => {
 
     it('should set pcd7', () => {
       const testResult = {
-       'Complex claimants': 'FALSE',
-       'High-level': '04/2018',
-       Rollout: ' ',
+       isComplex: 'FALSE',
+       highLevel: '04/2018',
        lad11cd: 'E08000030',
        lad11nm: 'Walsall',
-       pcd7: 'WS5 3NU',
-       pcd8: 'WS5  3NU',
+       pcd7: 'WS53NU',
       };
       const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: testResult });
-      expect(newState.result.pcd7).toEqual('WS5 3NU');
+      expect(newState.result.pcd7).toEqual('WS53NU');
     });
 
     it('should set isComplex to false when Complex claimants FALSE', () => {
       const testResult = {
-       'Complex claimants': 'FALSE',
-       'High-level': '04/2018',
-       Rollout: ' ',
+       isComplex: 'FALSE',
+       highLevel: '04/2018',
        lad11cd: 'E08000030',
        lad11nm: 'Walsall',
-       pcd7: 'WS5 3NU',
-       pcd8: 'WS5  3NU',
+       pcd7: 'WS53NU',
       };
       const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: testResult });
       expect(newState.result.isComplex).toEqual(false);
@@ -54,13 +48,11 @@ describe('SearchReducer', () => {
 
     it('should set isComplex to true when Complex claimants TRUE', () => {
       const testResult = {
-       'Complex claimants': 'TRUE',
-       'High-level': '04/2018',
-       Rollout: ' ',
+       isComplex: 'TRUE',
+       highLevel: '04/2018',
        lad11cd: 'E08000030',
        lad11nm: 'Walsall',
-       pcd7: 'WS5 3NU',
-       pcd8: 'WS5  3NU',
+       pcd7: 'WS53NU',
       };
       const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: testResult });
       expect(newState.result.isComplex).toEqual(true);
@@ -68,13 +60,12 @@ describe('SearchReducer', () => {
 
     it('should set isLive to true if rollout date blank and high level is in the past', () => {
       const testResult = {
-       'Complex claimants': 'TRUE',
-       'High-level': '04/2017',
-       Rollout: '',
+       isComplex: 'TRUE',
+       highLevel: '04/2017',
+       rollout: '',
        lad11cd: 'E08000030',
        lad11nm: 'Walsall',
-       pcd7: 'WS5 3NU',
-       pcd8: 'WS5  3NU',
+       pcd7: 'WS53NU',
       };
       const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: testResult });
       expect(newState.result.isLive).toEqual(true);
@@ -82,13 +73,12 @@ describe('SearchReducer', () => {
 
     it('should set isLive to false if rollout date blank and high level is in the future', () => {
       const testResult = {
-       'Complex claimants': 'TRUE',
-       'High-level': '04/2030',
-       Rollout: '',
+       isComplex: 'TRUE',
+       highLevel: '04/2030',
+       rollout: '',
        lad11cd: 'E08000030',
        lad11nm: 'Walsall',
-       pcd7: 'WS5 3NU',
-       pcd8: 'WS5  3NU',
+       pcd7: 'WS53NU',
       };
       const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: testResult });
       expect(newState.result.isLive).toEqual(false);
@@ -96,13 +86,12 @@ describe('SearchReducer', () => {
 
     it('should set isLive to true if rollout date is in the past', () => {
       const testResult = {
-       'Complex claimants': 'TRUE',
-       'High-level': '04/2017',
-       Rollout: '03/04/2017',
+       isComplex: 'TRUE',
+       highLevel: '04/2017',
+       rollout: '03/04/2017',
        lad11cd: 'E08000030',
        lad11nm: 'Walsall',
-       pcd7: 'WS5 3NU',
-       pcd8: 'WS5  3NU',
+       pcd7: 'WS53NU',
       };
       const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: testResult });
       expect(newState.result.isLive).toEqual(true);
@@ -110,13 +99,12 @@ describe('SearchReducer', () => {
 
     it('should set isLive to false if rollout date is in the future', () => {
       const testResult = {
-       'Complex claimants': 'TRUE',
-       'High-level': '04/2050',
-       Rollout: '03/04/2050',
+       isComplex: 'TRUE',
+       highLevel: '04/2050',
+       rollout: '03/04/2050',
        lad11cd: 'E08000030',
        lad11nm: 'Walsall',
-       pcd7: 'WS5 3NU',
-       pcd8: 'WS5  3NU',
+       pcd7: 'WS53NU',
       };
       const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: testResult });
       expect(newState.result.isLive).toEqual(false);
@@ -124,13 +112,12 @@ describe('SearchReducer', () => {
 
     it('should set go live date', () => {
       const testResult = {
-       'Complex claimants': 'TRUE',
-       'High-level': '04/2050',
-       Rollout: '03/04/2050',
+       isComplex: 'TRUE',
+       highLevel: '04/2050',
+       rollout: '03/04/2050',
        lad11cd: 'E08000030',
        lad11nm: 'Walsall',
-       pcd7: 'WS5 3NU',
-       pcd8: 'WS5  3NU',
+       pcd7: 'WS53NU',
       };
       const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: testResult });
       expect(newState.result.goLiveDate).toEqual('03/04/2050');

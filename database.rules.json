@@ -6,6 +6,9 @@
       "results" : {
         ".indexOn": ["pcd7"]
       }
+    },
+    "postcodesupdated": {
+      ".indexOn": ["pcd7"]
     }
   }
 }
