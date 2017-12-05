@@ -1,0 +1,15 @@
+.result {
+	display: flex;
+	flex-direction: column;
+}
+
+.info {
+	padding: 1.6rem 2.0rem;
+	margin-top: 4.0rem;
+	background-color: #d4e8f7;
+
+	h4 {
+		margin-top: .8rem;
+		margin-bottom: 0;
+	}
+}

@@ -17,17 +17,25 @@
 /* -----------------------------------------------------------------------------
  * Global styles
  * -------------------------------------------------------------------------- */
+$btn: #005ea5;
+$btn-hover: #2b8cc4;
 
-html {
-	font-family: Verdana, Arial, sans-serif;
-}
+
+html { font-size: 62.5%; }
 
 body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Gotham SSm A', 'Gotham SSm B', helvetica, arial, sans-serif;
+	font-size: 1.8rem;
+	line-height: 2.3rem;
+	color: #0b0c0c;
+}
+
+.app {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-	padding: 0;
-	margin: 0;
 }
 
 main {
@@ -35,22 +43,40 @@ main {
 	flex-grow: 1;
 	align-items: center;
 	justify-content: center;
+	padding: 0 1.6rem;
 	text-align: center;
 
 	@media (min-width: 768px) {
-		width: 80%;
+		width: 70%;
 		margin: 0 auto;
 	}
 }
 
+header,
 footer {
+	padding: 1.8rem 0;
 	text-align: center;
 	color: #ffffff;
 	background-color: #000000;
+
+	p { margin: 0; }
+}
+
+h1 {
+	line-height: 3.2rem;
 }
 
 a {
-	color: lightblue;
+	color: $btn;
+	font-weight: bold;
+
+	&:hover {
+		color: $btn-hover;
+	}
+}
+
+p {
+	margin: 1.6rem 0;
 }
 
 form {
@@ -64,7 +90,7 @@ input {
 	display: inline-block;
 	min-width: 250px;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 1.8rem;
     line-height: 1.5;
     color: #495057;
     background-color: #fff;
@@ -82,16 +108,18 @@ button {
     white-space: nowrap;
     vertical-align: middle;
     user-select: none;
-    border: .1rem solid #000000;
+    color: #ffffff;
+    background-color: $btn;
+    border-color: $btn;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 1.8rem;
     line-height: 1.5;
-    border-radius: .25rem;
     transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
     &:hover {
     	color: #ffffff;
-    	background-color: #000000;
+    	background-color: $btn-hover;
+    	border-color: $btn-hover;
     	cursor: pointer;
     }
 }

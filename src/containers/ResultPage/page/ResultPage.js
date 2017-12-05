@@ -32,20 +32,35 @@ export class ResultPage extends Component {
     const complex = searchResults["Complex claimants"];
     const highLevel = searchResults["High-level"];
     return (
-      <div>
+      <div className="app">
         <header>
           <PostcodeForm onSubmit={() => {}} />
         </header>
-        <h1>Postcode search</h1>
-        {error && <p>{error}</p>}
-        {loading && <div className="loader" />}
-        {!loading && <ul>
-          <li>Rollout: {Rollout}</li>
-          <li>Postcode: {pcd7}</li>
-          <li>Complex claimants: {complex}</li>
-          <li>High-level: {highLevel}</li>
-          <li>lad11nm: {lad11nm}</li>
-        </ul>}
+        <main>
+          <div className="result">
+            {error && <p>{error}</p>}
+            {loading && <div className="loader" />}
+            {!loading && <div>
+              <h1>{pcd7}</h1>
+              <p>Local Authority: {lad11nm}</p>
+
+              Rollout: {Rollout}
+              Postcode: {pcd7}
+              Complex claimants: {complex}
+              High-level: {highLevel}
+              lad11nm: {lad11nm}
+            </div>}
+
+            <div className="info">
+              <h4>Currently</h4>
+              <p>Single claimants, couples and families can make a claim online. Claimants must earn less than £338 per month, after tax.</p>
+              <p>Visit <a href='https://www.universal-credit.service.gov.uk/'>the Universal Credit website</a> to make a claim.</p>
+            </div>
+          </div>
+        </main>
+        <footer>
+          <p>Powered by <a href='https://octopus.energy'>Octopus Energy</a> for <a href='https://www.citizensadvice.org.uk/benefits/universal-credit/'>Citizen's Advice</a></p>
+        </footer>
       </div>
     );
   }
