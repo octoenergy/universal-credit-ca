@@ -14,6 +14,10 @@
     100% { transform: rotate(360deg); }
 }
 
+/* -----------------------------------------------------------------------------
+ * Global styles
+ * -------------------------------------------------------------------------- */
+
 html {
 	font-family: Verdana, Arial, sans-serif;
 }
@@ -47,4 +51,47 @@ footer {
 
 a {
 	color: lightblue;
+}
+
+form {
+	display: flex;
+	justify-content: center;
+
+	button[type=submit] { margin-left: .8rem; }
+}
+
+input {
+	display: inline-block;
+	min-width: 250px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: .1rem solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+button {
+	display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: .1rem solid #000000;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    &:hover {
+    	color: #ffffff;
+    	background-color: #000000;
+    	cursor: pointer;
+    }
 }
