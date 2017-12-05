@@ -10,6 +10,20 @@ const initialState = {
 describe('SearchReducer', () => {
   describe('UPDATE_RESULTS', () => {
 
+    it('should set lad11nm', () => {
+      const testResult = {
+       'Complex claimants': 'FALSE',
+       'High-level': '04/2018',
+       Rollout: ' ',
+       lad11cd: 'E08000030',
+       lad11nm: 'Walsall',
+       pcd7: 'WS5 3NU',
+       pcd8: 'WS5  3NU',
+      };
+      const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: testResult });
+      expect(newState.result.lad11nm).toEqual('Walsall');
+    });
+
     it('should set pcd7', () => {
       const testResult = {
        'Complex claimants': 'FALSE',
@@ -125,9 +139,19 @@ describe('SearchReducer', () => {
 
   describe('REQUEST_COMPLETE', () => {
     it('should update the error and loading props', () => {
-      const newState = SearchReducer({ initialState, loading: true }, { type: actionTypes.REQUEST_COMPLETE, error: 'foo' });
+      const newState = SearchReducer({ ...initialState, loading: true }, { type: actionTypes.REQUEST_COMPLETE, error: 'foo' });
       expect(newState.error).toEqual('foo');
       expect(newState.loading).toEqual(false);
+    });
+
+    it('should clear result on error', () => {
+      const newState = SearchReducer({ ...initialState, loading: true }, { type: actionTypes.REQUEST_COMPLETE, error: 'foo' });
+      expect(newState.result).toEqual(null);
+    });
+
+    it('should not clear result when error empty', () => {
+      const newState = SearchReducer({ ...initialState, loading: true }, { type: actionTypes.REQUEST_COMPLETE, error: '' });
+      expect(newState.result).toEqual({});
     });
   });
   describe('REQUEST_START', () => {

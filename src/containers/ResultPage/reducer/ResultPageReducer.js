@@ -48,11 +48,12 @@ export default (state = initialState, action) => {
         isLive,
         goLiveDate: Rollout ? Rollout : highLevel,
         pcd7: result.pcd7,
+        lad11nm: result.lad11nm
       };
       return { ...state, result: newResult };
     }
     case actionTypes.REQUEST_COMPLETE: {
-      return { ...state, error: action.error, loading: false };
+      return { ...state, error: action.error, loading: false, result: action.error ? null :  state.result };
     }
     case actionTypes.REQUEST_START: {
       return { ...state, loading: true };
