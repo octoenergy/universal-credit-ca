@@ -19,9 +19,12 @@ export class SearchPage extends Component {
 
     return (
       <div>
-        <h1>Enter a postcode</h1>
+        <h1>Universal Credit Full Service</h1>
+        <p>The new Universal Credit Full Service is rolling out across the U.K.</p>
+        <p>It allows claimants to replace <strong>Jobseeker's Allowance, Employment and Support Allowance, Housing benefits, Income Support, Child Tax Credits</strong> and <strong>Working Tax Credits</strong> into a single monthly payment.</p>
+        <p>To find out when it will be available, enter a postcode below.</p>
         <form onSubmit={this.onSubmit}>
-          <input type="text" />
+          <input type="text" placeholder="Enter a postcode" />
           <button type="submit">Go</button>
         </form>
       </div>
