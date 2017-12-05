@@ -11,13 +11,19 @@ export class SearchPage extends Component {
   render() {
 
     return (
-      <div>
-        <h1>Universal Credit Full Service</h1>
-        <p>The new Universal Credit Full Service is rolling out across the U.K.</p>
-        <p>It allows claimants to replace <strong>Jobseeker's Allowance, Employment and Support Allowance, Housing benefits, Income Support, Child Tax Credits</strong> and <strong>Working Tax Credits</strong> into a single monthly payment.</p>
-        <p>To find out when it will be available, enter a postcode below.</p>
-
-        <PostcodeForm onSubmit={() => {}} />
+      <div className="app">
+        <main>
+          <div>
+            <h1>Universal Credit Full Service</h1>
+            <p>The new Universal Credit Full Service is rolling out across the U.K.</p>
+            <p>It allows claimants to replace <strong>Jobseeker's Allowance, Employment and Support Allowance, Housing benefits, Income Support, Child Tax Credits</strong> and <strong>Working Tax Credits</strong> into a single monthly payment.</p>
+            <p>To find out when it will be available, enter a postcode below.</p>
+            <PostcodeForm onSubmit={() => {}} />
+          </div>
+        </main>
+        <footer>
+          <p>Powered by <a href="https://octopus.energy">Octopus Energy</a> for <a href="https://www.citizensadvice.org.uk/benefits/universal-credit/">Citizen's Advice</a></p>
+        </footer>
       </div>
     );
   }

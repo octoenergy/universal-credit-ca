@@ -15,13 +15,20 @@ export class ResultPage extends Component {
   render() {
     const { error, searchResults, loading, actions: { fetchResult }, params: { postcode } } = this.props;
     return (
-      <div>
+      <div className="app">
         <header>
           <PostcodeForm onSubmit={() => {}} />
         </header>
-        {error && <p>{error}</p>}
-        {loading && <div className="loader" />}
-        <LocationDetails searchResults={searchResults} fetchResult={fetchResult} postcode={postcode} />
+        <main>
+          <div className="result">
+            {error && <p>{error}</p>}
+            {loading && <div className="loader" />}
+            <LocationDetails searchResults={searchResults} fetchResult={fetchResult} postcode={postcode} />
+          </div>
+        </main>
+        <footer>
+          <p>Powered by <a href='https://octopus.energy'>Octopus Energy</a> for <a href='https://www.citizensadvice.org.uk/benefits/universal-credit/'>Citizen's Advice</a></p>
+        </footer>
       </div>
     );
   }
