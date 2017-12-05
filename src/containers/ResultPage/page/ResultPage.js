@@ -5,32 +5,15 @@ import { bindActionCreators } from 'redux';
 import * as SearchActions from '../actions/actions';
 import './ResultPageStyles.scss';
 import PostcodeForm from '../../../components/PostcodeForm/PostcodeForm';
+import LocationDetails from '../components/LocationDetails/LocationDetails';
 
 export class ResultPage extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentWillMount() {
-    this.props.actions.fetchRepos(this.props.params.postcode);
-  }
-
-  componentWillUpdate(newProps) {
-    const postcode = this.props.params.postcode
-    if (postcode !== newProps.params.postcode) {
-      this.props.actions.fetchRepos(postcode); 
-    }
-  }
-
   render() {
-    const { error, searchResults, loading } = this.props;
-    const {
-      Rollout,
-      lad11nm,
-      pcd7,
-     } = searchResults;
-    const complex = searchResults["Complex claimants"];
-    const highLevel = searchResults["High-level"];
+    const { error, searchResults, loading, actions: { fetchResult }, params: { postcode } } = this.props;
     return (
       <div className="app">
         <header>
@@ -40,22 +23,7 @@ export class ResultPage extends Component {
           <div className="result">
             {error && <p>{error}</p>}
             {loading && <div className="loader" />}
-            {!loading && <div>
-              <h1>{pcd7}</h1>
-              <p>Local Authority: {lad11nm}</p>
-
-              Rollout: {Rollout}
-              Postcode: {pcd7}
-              Complex claimants: {complex}
-              High-level: {highLevel}
-              lad11nm: {lad11nm}
-            </div>}
-
-            <div className="info">
-              <h4>Currently</h4>
-              <p>Single claimants, couples and families can make a claim online. Claimants must earn less than £338 per month, after tax.</p>
-              <p>Visit <a href='https://www.universal-credit.service.gov.uk/'>the Universal Credit website</a> to make a claim.</p>
-            </div>
+            <LocationDetails searchResults={searchResults} fetchResult={fetchResult} postcode={postcode} />
           </div>
         </main>
         <footer>

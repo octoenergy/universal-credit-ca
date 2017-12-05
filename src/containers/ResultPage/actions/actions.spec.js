@@ -1,17 +1,17 @@
-import { fetchRepos } from './actions';
+import { fetchResult } from './actions';
 import searchService from '../../../services/search/searchService';
 import { actionTypes } from '../ResultPageConstants';
 
 jest.mock('../../../services/search/searchService');
 
 describe('repo search actions', () => {
-  describe('fetchRepos', () => {
+  describe('fetchResult', () => {
     it('should call searchService.repoSearch and dispatch actions', async () => {
       searchService.__setMockReposSearch(Promise.resolve({
         result: 'foo',
       }));
       const dispatch = jest.fn();
-      await fetchRepos()(dispatch);
+      await fetchResult()(dispatch);
       expect(searchService.repoSearch).toHaveBeenCalled();
       expect(dispatch.mock.calls).toEqual([
         [{ type: actionTypes.REQUEST_START }],
@@ -25,7 +25,7 @@ describe('repo search actions', () => {
         message: 'Something went wrong',
       }));
       const dispatch = jest.fn();
-      await fetchRepos()(dispatch);
+      await fetchResult()(dispatch);
       expect(searchService.repoSearch).toHaveBeenCalled();
       expect(dispatch.mock.calls).toEqual([
         [{ type: actionTypes.REQUEST_START }],

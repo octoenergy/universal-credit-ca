@@ -17,7 +17,7 @@ describe('<ResultPage />', () => {
 
     props = {
       actions: {
-        fetchRepos: jest.fn(),
+        fetchResult: jest.fn(),
       },
       searchResults: repoDataMock,
       params: {
@@ -27,9 +27,9 @@ describe('<ResultPage />', () => {
   });
 
   describe('componentWillMount', () => {
-    it('should call fetchRepos', () => {
+    it('should call fetchResult', () => {
       mount(<ResultPage {...props} />);
-      expect(props.actions.fetchRepos).toHaveBeenCalled();
+      expect(props.actions.fetchResult).toHaveBeenCalled();
     });
   });
 
