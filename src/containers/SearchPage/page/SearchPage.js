@@ -22,8 +22,8 @@ export class SearchPage extends Component {
         <h1>Enter a postcode</h1>
         <form onSubmit={this.onSubmit}>
           <input type="text" />
+          <button type="submit">Go</button>
         </form>
-        <button type="submit">Go</button>
       </div>
     );
   }
