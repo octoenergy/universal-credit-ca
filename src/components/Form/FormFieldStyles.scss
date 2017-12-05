@@ -1,11 +1,6 @@
 .FormField {
-  position: relative;
-  padding-top: 35px;
-  min-width: 280px;
+  display: flex;
+  flex-direction: column-reverse;
 
-  &__Error {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+  &__Error { margin-bottom: .8rem; }
 }
