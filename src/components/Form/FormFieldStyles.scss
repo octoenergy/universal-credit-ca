@@ -1,0 +1,11 @@
+.FormField {
+  position: relative;
+  padding-top: 35px;
+  min-width: 280px;
+
+  &__Error {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

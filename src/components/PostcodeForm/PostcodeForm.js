@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import ReduxFormValidate from  '../ReduxFormValidate/ReduxFormValidate';
 import postcodeValidator from '../../utils/postcodeValidator';
+import { renderField } from '../Form/renderField';
+
+const postcodeValidatorRedux = (value) => (value) ? undefined : "Please enter a valid postcode";
 
 function validate (values) {
     const errors = {
-        postcode: postcodeValidator(values.postcode)
+        postcode: postcodeValidatorRedux(values.postcode)
     };
     return errors;
 }
@@ -32,8 +35,9 @@ class PostcodeForm extends Component {
                 <Field
                     name="postcode"
                     type="text"
-                    component="input"
-                    placeholder="Enter a postcode"
+                    component={renderField}
+                    label="Enter a postcode"
+                    validate={postcodeValidatorRedux}
                 />
                 <button type="submit">Go</button>
             </form>
@@ -55,6 +59,7 @@ const postcodeFormValueSelector = formValueSelector(POSTCODE_FORM_NAME);
 const PostcodeFormWrapped = ReduxFormValidate(reduxForm({
     form: POSTCODE_FORM_NAME,
     destroyOnUnmount: true,
+    validate,
 })(PostcodeForm));
 
 // Requesting something from the state
