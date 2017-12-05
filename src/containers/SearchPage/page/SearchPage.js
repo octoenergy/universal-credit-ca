@@ -7,14 +7,6 @@ import './SearchPageStyles.scss';
 import PostcodeForm from '../../../components/PostcodeForm/PostcodeForm';
 
 export class SearchPage extends Component {
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onSubmit() {
-    this.context.router.push('find/WR65DW');
-  }
 
   render() {
 
@@ -25,7 +17,7 @@ export class SearchPage extends Component {
         <p>It allows claimants to replace <strong>Jobseeker's Allowance, Employment and Support Allowance, Housing benefits, Income Support, Child Tax Credits</strong> and <strong>Working Tax Credits</strong> into a single monthly payment.</p>
         <p>To find out when it will be available, enter a postcode below.</p>
 
-        <PostcodeForm submitForm={this.onSubmit} />
+        <PostcodeForm onSubmit={() => {}} />
       </div>
     );
   }

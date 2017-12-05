@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as SearchActions from '../actions/actions';
 import './ResultPageStyles.scss';
+import PostcodeForm from '../../../components/PostcodeForm/PostcodeForm';
 
 export class ResultPage extends Component {
   constructor(props) {
@@ -12,6 +13,13 @@ export class ResultPage extends Component {
 
   componentWillMount() {
     this.props.actions.fetchRepos(this.props.params.postcode);
+  }
+
+  componentWillUpdate(newProps) {
+    const postcode = this.props.params.postcode
+    if (postcode !== newProps.params.postcode) {
+      this.props.actions.fetchRepos(postcode); 
+    }
   }
 
   render() {
@@ -25,6 +33,9 @@ export class ResultPage extends Component {
     const highLevel = searchResults["High-level"];
     return (
       <div>
+        <header>
+          <PostcodeForm onSubmit={() => {}} />
+        </header>
         <h1>Postcode search</h1>
         {error && <p>{error}</p>}
         {loading && <div className="loader" />}

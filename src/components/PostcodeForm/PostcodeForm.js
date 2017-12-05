@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import ReduxFormValidate from  '../ReduxFormValidate/ReduxFormValidate';
 import postcodeValidator from '../../utils/postcodeValidator';
 
@@ -16,16 +16,21 @@ class PostcodeForm extends Component {
 
     constructor(props) {
         super(props)
-        this.submit = this.submit.bind(this);
     }
 
-    submit(formValues) {
-        return this.props.submitForm(formValues);
+    componentWillUpdate(newProps) {
+        console.log('this.props', this.props);
+        console.log('newProps', newProps);
+        if (newProps.submitSucceeded) {
+            console.log(this.props);
+            this.context.router.push(`/find/${this.props.postcode}`);
+        }
     }
 
     render() {
+        const { handleSubmit } = this.props
         return (
-            <form onSubmit={this.props.handleSubmit(this.submit)}>
+            <form onSubmit={handleSubmit}>
                 <Field
                     name="postcode"
                     type="text"
@@ -39,7 +44,7 @@ class PostcodeForm extends Component {
 }
 
 PostcodeForm.propTypes = {
-    submitForm: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
 }
 
 PostcodeForm.contextTypes = {
@@ -47,13 +52,18 @@ PostcodeForm.contextTypes = {
 }
 
 const POSTCODE_FORM_NAME = 'POSTCODE_FORM_NAME'
+const postcodeFormValueSelector = formValueSelector(POSTCODE_FORM_NAME)
 
 const PostcodeFormWrapped = ReduxFormValidate(reduxForm({
     form: POSTCODE_FORM_NAME,
-    destroyOnUnmount: false,
-    validate,
+    destroyOnUnmount: true,
 })(PostcodeForm))
 
-const PostcodeFormWrappedConnected = connect()(PostcodeFormWrapped)
+// Requesting something from the state
+const PostcodeFormWrappedConnected = connect(
+    (state) => ({
+        postcode: postcodeFormValueSelector(state, 'postcode')
+    })
+)(PostcodeFormWrapped)
 
 export default PostcodeFormWrappedConnected
