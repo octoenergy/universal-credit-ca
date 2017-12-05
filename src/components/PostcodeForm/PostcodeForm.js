@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import ReduxFormValidate from  '../ReduxFormValidate/ReduxFormValidate';
-import postcodeValidator from '../../utils/postcodeValidator';
 import { renderField } from '../Form/renderField';
 
 const postcodeValidatorRedux = (value) => (value) ? undefined : "Please enter a valid postcode";
@@ -46,7 +45,11 @@ class PostcodeForm extends Component {
 }
 
 PostcodeForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    submitSucceeded: PropTypes.bool.isRequired,
+    postcode: PropTypes.string,
+    reset: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired
 };
 
 PostcodeForm.contextTypes = {
