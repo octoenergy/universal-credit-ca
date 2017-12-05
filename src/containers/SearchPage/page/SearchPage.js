@@ -30,7 +30,7 @@ export class SearchPage extends Component {
 }
 
 SearchPage.propTypes = {
-  searchResults: PropTypes.object.isRequired,
+  searchResults: PropTypes.object,
   actions: PropTypes.object.isRequired,
   error: PropTypes.string,
   loading: PropTypes.bool,

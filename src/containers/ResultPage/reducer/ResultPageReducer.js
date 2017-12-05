@@ -1,7 +1,7 @@
 import { actionTypes } from '../ResultPageConstants';
 
 const initialState = {
-  result: {},
+  result: null,
   error: '',
   loading: false,
 };
@@ -53,10 +53,10 @@ export default (state = initialState, action) => {
       return { ...state, result: newResult };
     }
     case actionTypes.REQUEST_COMPLETE: {
-      return { ...state, error: action.error, loading: false, result: action.error ? null :  state.result };
+      return { ...state, error: action.error, loading: false };
     }
     case actionTypes.REQUEST_START: {
-      return { ...state, loading: true };
+      return { ...state, loading: true, result: null, error: '' };
     }
     default:
       return state;

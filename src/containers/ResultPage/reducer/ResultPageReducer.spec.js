@@ -130,21 +130,19 @@ describe('SearchReducer', () => {
       expect(newState.error).toEqual('foo');
       expect(newState.loading).toEqual(false);
     });
-
-    it('should clear result on error', () => {
-      const newState = SearchReducer({ ...initialState, loading: true }, { type: actionTypes.REQUEST_COMPLETE, error: 'foo' });
-      expect(newState.result).toEqual(null);
-    });
-
-    it('should not clear result when error empty', () => {
-      const newState = SearchReducer({ ...initialState, loading: true }, { type: actionTypes.REQUEST_COMPLETE, error: '' });
-      expect(newState.result).toEqual({});
-    });
   });
   describe('REQUEST_START', () => {
     it('should update loading', () => {
       const newState = SearchReducer(initialState, { type: actionTypes.REQUEST_START });
       expect(newState.loading).toEqual(true);
+    });
+    it('should clear old result', () => {
+      const newState = SearchReducer({ ...initialState, loading: true }, { type: actionTypes.REQUEST_START });
+      expect(newState.result).toEqual(null);
+    });
+    it('should clear old error', () => {
+      const newState = SearchReducer({ ...initialState, error: 'foo' }, { type: actionTypes.REQUEST_START });
+      expect(newState.error).toEqual('');
     });
   });
 });
