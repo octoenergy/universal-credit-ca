@@ -21,7 +21,7 @@ export class ResultPage extends Component {
         </header>
         <main>
           <div className="result">
-            {error && <p>{error}</p>}
+            {error && <p className="error">{error}</p>}
             {loading && <div className="loader" />}
             <LocationDetails searchResults={searchResults} fetchResult={fetchResult} postcode={postcode} />
           </div>
