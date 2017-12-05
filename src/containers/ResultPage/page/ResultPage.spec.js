@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { RepoSearchPage } from './RepoSearchPage';
+import { ResultPage } from './ResultPage';
 
-describe('<RepoSearchPage />', () => {
+describe('<ResultPage />', () => {
   let props = {};
   let repoDataMock = {
     "Complex claimants":"FALSE",
@@ -25,7 +25,7 @@ describe('<RepoSearchPage />', () => {
 
   describe('componentWillMount', () => {
     it('should call fetchRepos', () => {
-      mount(<RepoSearchPage {...props} />);
+      mount(<ResultPage {...props} />);
       expect(props.actions.fetchRepos).toHaveBeenCalled();
     });
   });

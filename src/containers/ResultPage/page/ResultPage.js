@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as RepoSearchActions from '../actions/RepoSearchActions';
-import './RepoSearchPageStyles.scss';
+import * as SearchActions from '../actions/actions';
+import './ResultPageStyles.scss';
 
-export class RepoSearchPage extends Component {
+export class ResultPage extends Component {
   constructor(props) {
     super(props);
   }
 
   componentWillMount() {
-    this.props.actions.fetchRepos();
+    this.props.actions.fetchRepos(this.props.params.postcode);
   }
 
   render() {
@@ -40,14 +40,15 @@ export class RepoSearchPage extends Component {
   }
 }
 
-RepoSearchPage.propTypes = {
+ResultPage.propTypes = {
   searchResults: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
   error: PropTypes.string,
   loading: PropTypes.bool,
+  params: PropTypes.object.isRequired,
 };
 
-RepoSearchPage.defaultProps = {
+ResultPage.defaultProps = {
   error: '',
 };
 
@@ -58,7 +59,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(RepoSearchActions, dispatch),
+  actions: bindActionCreators(SearchActions, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RepoSearchPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ResultPage);

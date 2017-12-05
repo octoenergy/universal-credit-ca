@@ -1,4 +1,4 @@
-import { actionTypes } from '../RepoSearchConstants';
+import { actionTypes } from '../SearchPageConstants';
 
 const initialState = {
   result: {},

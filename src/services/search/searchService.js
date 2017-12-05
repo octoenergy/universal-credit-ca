@@ -25,7 +25,7 @@ export function formatPostcode(postcode) {
 const repoSearch = async (postcode) => {
   let searchParam = formatPostcode(postcode);
   let snapshot = await firebase.database().ref('/postcodes/results').orderByChild('pcd7').equalTo(searchParam).once('value');
-  let data = snapshot.val() || {pcd7: 'No Data'};
+  let data = snapshot.val();
   for (let variable in data) {
     if (data.hasOwnProperty(variable)) {
       return data[variable];

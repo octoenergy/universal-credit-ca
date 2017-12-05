@@ -1,5 +1,5 @@
 import searchService from '../../../services/search/searchService';
-import { actionTypes } from '../RepoSearchConstants';
+import { actionTypes } from '../ResultPageConstants';
 
 export const fetchRepos = (postcode) => async (dispatch) => {
   let error = '';

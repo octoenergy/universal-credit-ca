@@ -1,5 +1,5 @@
-import RepoSearchReducer from './RepoSearchReducer';
-import { actionTypes } from '../RepoSearchConstants';
+import SearchReducer from './SearchReducer';
+import { actionTypes } from '../SearchConstants';
 
 const initialState = {
   result: [],
@@ -7,23 +7,23 @@ const initialState = {
   loading: false,
 };
 
-describe('RepoSearchReducer', () => {
+describe('SearchReducer', () => {
   describe('UPDATE_RESULTS', () => {
     it('should update the result', () => {
-      const newState = RepoSearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: ['foo'] });
+      const newState = SearchReducer(initialState, { type: actionTypes.UPDATE_RESULTS, result: ['foo'] });
       expect(newState.result).toEqual(['foo']);
     });
   });
   describe('REQUEST_COMPLETE', () => {
     it('should update the error and loading props', () => {
-      const newState = RepoSearchReducer({ initialState, loading: true }, { type: actionTypes.REQUEST_COMPLETE, error: 'foo' });
+      const newState = SearchReducer({ initialState, loading: true }, { type: actionTypes.REQUEST_COMPLETE, error: 'foo' });
       expect(newState.error).toEqual('foo');
       expect(newState.loading).toEqual(false);
     });
   });
   describe('REQUEST_START', () => {
     it('should update loading', () => {
-      const newState = RepoSearchReducer(initialState, { type: actionTypes.REQUEST_START });
+      const newState = SearchReducer(initialState, { type: actionTypes.REQUEST_START });
       expect(newState.loading).toEqual(true);
     });
   });
