@@ -28,7 +28,7 @@ const repoSearch = async (postcode) => {
   let snapshot = await firebase.database().ref('/postcodesupdated').orderByChild('pcd7').equalTo(searchParam).once('value');
   let data = snapshot.val();
   if (!data) {
-    throw new Error('could not get postcode');
+    throw new Error('Sorry we could not find that postcode, please try again');
   }
   else {
     if (data.length) {
