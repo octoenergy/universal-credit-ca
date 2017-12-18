@@ -16,7 +16,11 @@ export function formatPostcode(postcode) {
     const tmp = postcode.replace(/ /g, '');
     const match = postcode.match(lastMatch);
     if (match !== null && tmp.length < 7) {
-        const newPostcode = tmp.slice(0, -3) + ' ' + match[0];
+        let padding = ' ';
+        if (tmp.length === 5) {
+          padding = '  ';
+        }
+        const newPostcode = tmp.slice(0, -3) + padding + match[0];
         return newPostcode;
     } else {
         return postcode;
