@@ -13,21 +13,21 @@ firebase.initializeApp(config);
 
 export function formatPostcode(postcode) {
     const lastMatch = '[0-9][a-zA-Z][a-zA-Z]';
-    const tmp = postcode.replace(/ /g, '').toUpperCase();
+    const tmp = postcode.replace(/ /g, '');
+    let newPostcode = tmp;
     const match = postcode.match(lastMatch);
     if (match !== null && tmp.length < 7) {
         let padding = ' ';
         if (tmp.length === 5) {
           padding = '  ';
         }
-        const newPostcode = tmp.slice(0, -3) + padding + match[0];
-        return newPostcode;
-    } else {
-        return postcode;
+        newPostcode = tmp.slice(0, -3) + padding + match[0];
+
     }
+    return newPostcode.toUpperCase();
 }
 
-const repoSearch = async (postcode) => {
+const postcodeSearch = async (postcode) => {
   let searchParam = formatPostcode(postcode);
   let snapshot = await firebase.database().ref('/full-postcodes').orderByChild('pcd7').equalTo(searchParam).once('value');
   let data = snapshot.val();
@@ -49,5 +49,5 @@ const repoSearch = async (postcode) => {
 };
 
 export default {
-  repoSearch,
+  postcodeSearch,
 };

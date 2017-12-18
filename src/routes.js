@@ -16,6 +16,6 @@ from './containers/ResultPage/page/ResultPage';
 export default (
   <Route path="/">
     <IndexRoute component={SearchPage} />
-    <Route component={RepoResultPage} path="find/:postcode" />
+    <Route component={RepoResultPage} path="/find/:postcode" />
   </Route>
 );

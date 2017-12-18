@@ -47,9 +47,9 @@ ResultPage.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  searchResults: state.repoSearch.result,
-  error: state.repoSearch.error,
-  loading: state.repoSearch.loading,
+  searchResults: state.postcodeSearch.result,
+  error: state.postcodeSearch.error,
+  loading: state.postcodeSearch.loading,
 });
 
 const mapDispatchToProps = dispatch => ({

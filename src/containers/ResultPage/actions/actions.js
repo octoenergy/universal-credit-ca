@@ -7,7 +7,7 @@ export const fetchResult = (postcode) => async (dispatch) => {
     type: actionTypes.REQUEST_START,
   });
   try {
-    const result = await searchService.repoSearch(postcode);
+    const result = await searchService.postcodeSearch(postcode);
     dispatch({
       type: actionTypes.UPDATE_RESULTS,
       result,
