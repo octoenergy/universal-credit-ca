@@ -15,7 +15,7 @@ export function formatPostcode(postcode) {
     const lastMatch = '[0-9][a-zA-Z][a-zA-Z]';
     const tmp = postcode.replace(/ /g, '');
     const match = postcode.match(lastMatch);
-    if (match !== null) {
+    if (match !== null && tmp.length < 7) {
         const newPostcode = tmp.slice(0, -3) + ' ' + match[0];
         return newPostcode;
     } else {
@@ -25,7 +25,7 @@ export function formatPostcode(postcode) {
 
 const repoSearch = async (postcode) => {
   let searchParam = formatPostcode(postcode);
-  let snapshot = await firebase.database().ref('/postcodesupdated').orderByChild('pcd7').equalTo(searchParam).once('value');
+  let snapshot = await firebase.database().ref('/full-postcodes').orderByChild('pcd7').equalTo(searchParam).once('value');
   let data = snapshot.val();
   if (!data) {
     throw new Error('Sorry we could not find that postcode, please try again');
