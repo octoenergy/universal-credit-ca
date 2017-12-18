@@ -2,12 +2,7 @@
   "rules": {
     ".read": true,
     ".write": "auth != null",
-    "postcodes": {
-      "results" : {
-        ".indexOn": ["pcd7"]
-      }
-    },
-    "postcodesupdated": {
+    "full-postcodes": {
       ".indexOn": ["pcd7"]
     }
   }
