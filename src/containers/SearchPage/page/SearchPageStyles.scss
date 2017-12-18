@@ -20,6 +20,7 @@
  * -------------------------------------------------------------------------- */
 $btn: #005ea5;
 $btn-hover: #2b8cc4;
+$link: #1a9cff;
 
 
 html { font-size: 62.5%; }
@@ -73,11 +74,11 @@ h3 {
 }
 
 a {
-	color: $btn;
+	color: $link;
 	font-weight: bold;
 
 	&:hover {
-		color: $btn-hover;
+		color: $link;
 	}
 }
 

@@ -13,7 +13,7 @@ firebase.initializeApp(config);
 
 export function formatPostcode(postcode) {
     const lastMatch = '[0-9][a-zA-Z][a-zA-Z]';
-    const tmp = postcode.replace(/ /g, '');
+    const tmp = postcode.replace(/ /g, '').toUpperCase();
     const match = postcode.match(lastMatch);
     if (match !== null && tmp.length < 7) {
         let padding = ' ';
