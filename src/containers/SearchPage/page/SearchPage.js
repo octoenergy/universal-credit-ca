@@ -16,7 +16,7 @@ export class SearchPage extends Component {
           <div>
             <h1>Universal Credit Full Service</h1>
             <p>The new Universal Credit Full Service is rolling out across the U.K.</p>
-            <p>It allows claimants to replace <strong>Jobseeker's Allowance, Employment and Support Allowance, Housing benefits, Income Support, Child Tax Credits</strong> and <strong>Working Tax Credits</strong> into a single monthly payment.</p>
+            <p>It combines <strong>Jobseeker's Allowance, Employment and Support Allowance, Housing benefits, Income Support, Child Tax Credits</strong> and <strong>Working Tax Credits</strong> into a single monthly payment.</p>
             <p>To find out when it will be available, enter a postcode below.</p>
             <PostcodeForm onSubmit={() => {}} />
           </div>
