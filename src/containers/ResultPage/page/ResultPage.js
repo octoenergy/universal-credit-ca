@@ -27,7 +27,7 @@ export class ResultPage extends Component {
           </div>
         </main>
         <footer>
-          <p>Powered by <a href="https://octopus.energy">Octopus Energy</a> for <a href="https://www.citizensadvice.org.uk/benefits/universal-credit/">Citizen's Advice</a></p>
+          <p>Powered by <a href="https://octopus.energy">Octopus Energy</a> for <a href="https://www.citizensadvice.org.uk/benefits/universal-credit/">Citizens Advice</a></p>
         </footer>
       </div>
     );
